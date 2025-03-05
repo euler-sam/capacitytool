@@ -1,0 +1,231 @@
+<!DOCTYPE html> 
+<html> 
+<!-- The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only.  Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
+ 
+THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
+ 
+ 
+Authors in chronological order of contribution:
+Euler De Leon
+Timothy Riedel 
+ 
+Further Information:
+http://diystream.cns.utexas.edu/
+
+Research Educator:
+Timothy Riedel
+triedel@utexas.edu
+ 
+Brief Description of Goal of Code:
+To give a quiz and a result.
+ 
+Known Issues:
+None at the moment.
+-->
+
+   <head> 
+      <title>Hello World</title>  
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link rel="stylesheet" href="w3.css">
+      <link rel="stylesheet" href="w3-colors-flat.css">
+   </head> 
+
+
+
+<script> //start of functions and variables
+        var covid_count = 0;  //covid variable initialized at 0
+	var flu_count = 0;  //flu variable initialized at 0
+	
+        //the function for the choice of covid 
+        function covidAdd() {  
+                covid_count = covid_count + 1;
+	}
+        //the function for the choice of the flu
+        function fluAdd() {
+		flu_count = flu_count + 1;
+        }
+        //the function for the results
+	function resultsFunction() {
+		var resultText = document.getElementById("results");
+		var covidPercent = (covid_count/(covid_count + flu_count))*100;  //percent probability it is COVID-19
+	        var fluPercent = (flu_count/(covid_count + flu_count))*100; //perent probability it is the flu
+		resultText.innerHTML = "Percent probability it is COVID-19 =" + covidPercent + "<br> Percent probability it is the flu =" + fluPercent; //inner HTML
+	}
+	// The following code lets you know when the file was last modified.
+        // This will help you know if you are looking at the new version of the file or if there is a delay on GitHub.
+        var docMod = document.lastModified;
+                alert("This file last modified  " + docMod);
+                console.log("This file last modified  " + docMod);
+        // If you find the alert box annoying, comment out that line and timestamp will still show up in the debugging console
+
+
+
+ </script>
+
+
+
+<style>	
+.body {
+     margin: 0em;
+}
+
+  .page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    overflow-y: auto;
+    z-index: 0;
+    background-color: hsl(0,0%,100%);
+}
+
+  .page:target {
+    left: 0vw;
+    z-index: 1;
+}
+  img, object{
+    max-height:90%;
+            max-width:90%;
+}
+
+</style>
+
+<body>
+<div id="header" class="w3-container w3-flat-silver"> <!--start of front page-->
+	<h1>Newcomer Education Evaluator</h1> <!--header for front page-->
+</div> <!--start of content for front page-->
+	
+<div id="content" class="w3-container"> <!--below is content of front page-->
+	<p>Feel as if you are underserving your students who have just arrived, but aren't sure? Answer a few short questions to find out!</p> <!--paragraph for front page-->
+	
+	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a> <!--button to get started-->
+	
+	<p>The following code has been developed by students at Brown University.  This code is shared for demonstration purposes and should not be considered a product. Any user of this code does so at their own risk. Euler De Leon, Emily Lopez Touchy, Estela Westphalen, Jiacheng He, and Brown University are not liable for anything related to this code.</p>
+ 	
+	<p>THIS CODE SHOULD NOT BE USED FOR ECONOMIC CONSULTATION.</p> <!--paragraph for front page-->
+	
+	<img src="https://scontent-lga3-1.xx.fbcdn.net/v/t1.6435-9/44119792_10156126121169983_4576036501380399104_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Cr_BJo6qb9sQ7kNvgFz_FcL&_nc_zt=23&_nc_ht=scontent-lga3-1.xx&_nc_gid=ANW2dz6HD_qfjqI7t0NwWZA&oh=00_AYCbjALEaphKX-0fa2XCPjkMomwaBGh9OJdH5FHCrLR7Xw&oe=67F00311" alt="Refugee, Immigrant, and Undocumented">
+	
+	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
+	        <p>beta prototype</p> <!--paragraph for footer-->
+	</footer>
+	</div> <!--end of front page-->
+</div> <!--start of page one-->
+	
+<div class="page" id="one"> <!--start of page one-->
+	<div id="header" class="w3-container w3-flat-silver"> <!-- page one-->
+		<h1>Question 1</h1> <!--header for page one-->
+</div> <!--start of content for page one-->
+	
+<div id="content" class="w3-container"> <!--below is content for page one-->
+        <p>Are you experiencing shortness of breath?</p> <!--paragraph for page one-->   
+	<a href="#two"  onclick="covidAdd();" class="w3-btn w3-black"> Yes</a> <!--button for yes-->
+        <a href="#two"  onclick="fluAdd();" class="w3-btn w3-black"> No</a> <!--button for no-->
+		
+	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
+	        <p>Maker Space!</p> <!--paragraph for footer-->
+	</footer>
+        </div> <!--end of page one-->
+</div> <!--start of page two=-->
+
+<div class="page" id="two"> <!--start of page two-->
+	<div id="header" class="w3-container w3-flat-silver"> <!--page two-->
+		<h1>Question 2</h1> <!--header for page two-->
+	</div> <!--start of content for page two-->
+	
+<div id="content" class="w3-container"> <!--below is content for page two-->
+	<p>Have you experiecned difficulty smelling?</p> <!--paragraph for page two-->
+        <a href="#three"  onclick="covidAdd();" class="w3-btn w3-black"> Yes</a> <!--button for yes-->
+        <a href="#three"  onclick="fluAdd();" class="w3-btn w3-black"> No</a> <!--button for no-->
+		
+	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
+	        <p>Maker Space!</p> <!--paragraph for footer-->
+	</footer>
+	</div> <!--end of page two-->
+</div>	<!--start of page three-->
+	
+<div class="page" id="three"> <!--start of page three-->
+	<div id="header" class="w3-container w3-flat-silver"> <!--page three-->
+		<h1>Question 3</h1> <!--header for page three-->
+	</div> <!--start of content for page three-->
+	
+<div id="content" class="w3-container"> <!---below is content for page three-->
+        <p>Are you vomiting and/or have diarreha?</p> <!--paragraph for page three-->
+	<a href="#four"  onclick="fluAdd();" class="w3-btn w3-black"> Yes</a> <!--button for yes-->
+	<a href="#four"  onclick="covidAdd();" class="w3-btn w3-black"> No</a> <!--button for no-->
+		
+	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
+	        <p>Maker Space!</p> <!--paragraph for footer-->
+	</footer>
+        </div> <!--end of page three-->
+</div> <!--start of page four-->
+		
+<div class="page" id="four"> <!--start of page four-->
+	<div id="header" class="w3-container w3-flat-silver"> <!--page four-->
+		<h1>Question 4</h1> <!--header for page four-->
+	</div> <!--start of content for page four-->
+	
+<div id="content" class="w3-container"> <!--below is content for page four-->
+        <p>Have you experienced difficulty tasting?</p> <!--paragraph for page four-->
+        <a href="#five"  onclick="covidAdd();" class="w3-btn w3-black"> Yes</a> <!--button for yes-->
+        <a href="#five"  onclick="fluAdd();" class="w3-btn w3-black" > No</a> <!--button for no-->
+	
+	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
+	        <p>Maker Space!</p> <!--paragraph for footer-->
+	</footer>
+	</div> <!--end of page four-->
+</div> <!--start of page five-->
+		
+<div class="page" id="five"> <!--start of page five-->
+	<div id="header" class="w3-container w3-flat-silver"> <!--page five-->
+		<h1>Question 5</h1> <!--header for page five-->
+	</div> <!--starts the content for page five-->
+	
+<div id="content" class="w3-container"> <!--below is content for page five-->
+	<p>Have you experienced sneezing fits?</p> <!--page five--->
+	<a href="#six"  onclick="fluAdd();" class="w3-btn w3-black"> Yes</a> <!--yes button-->
+	<a href="#six"  onclick="covidAdd();" class="w3-btn w3-black"> No</a> <!--no button-->
+		
+	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
+	        <p>Maker Space!</p> <!--paragraph for footer-->
+	</footer>
+	</div> <!--end of page five-->
+</div> <!--start of page six-->
+
+<div class="page" id="six"> <!--start of page six-->
+	<div id="header" class="w3-container w3-flat-silver"> <!--page six-->
+		<h1>Question 6</h1> <!--header for page six-->
+	</div> <!--start the content for page six-->
+	
+<div id="content" class"w3-container"> <!--below is content for page six-->
+	<p>Are you experiencing a dry cough?</p> <!--paragraph for page six-->
+	<a href="#results"  onclick="covidAdd();" class="w3-btn w3-black"> Yes</a> <!--yes button-->
+	<a href="#results"  onclick="fluAdd();" class="w3-btn w3-black"> No</a> <!--no button-->
+		
+	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
+	        <p>Maker Space!</p> <!--paragraph for footer-->
+	</footer>
+	</div> <!--end of page six-->
+</div> <!--start of results page-->
+	
+<div class="page" id="results"> <!--start of results page-->
+	<div id="header" class="w3-container w-3 flat-silver"> <!--results page-->
+		<h1>Results</h1> <!--header for results page-->
+	</div> <!--starts content for results page-->
+	
+<div id="content" class="w3-container"> <!--below is content for results page-->
+	<p id="resultsFunction"></p> <!--results paragraph-->
+	<a onclick="resultsFunction();"  class="w3-btn w3-black"> Click Here For Results!</a> <!--results button-->
+		
+	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
+	        <p>Maker Space!</p> <!--paragraph for footer-->
+	</footer>
+	<div> <!--end of results page-->
+</div> <!--end of page-->
+      
+	  
+	   
+   </body>
+</html>
