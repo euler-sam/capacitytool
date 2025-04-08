@@ -52,7 +52,7 @@
             <h1>Question 1</h1>
         </div>
         <div id="content" class="w3-container">
-            <p>Are you experiencing shortness of breath?</p>
+            <p>Do you know what a newcomer student is?</p>
             <a href="#two" onclick="covidAdd();" class="w3-btn w3-black">Yes</a>
             <a href="#two" onclick="fluAdd();" class="w3-btn w3-black">No</a>
             <footer class="w3-bottom w3-container w3-flat-silver">
@@ -94,7 +94,7 @@
             var total = covid_count + flu_count;
             var covidPercent = (covid_count / total) * 100;
             var fluPercent = (flu_count / total) * 100;
-            resultText.innerHTML = "Percent probability it is COVID-19 = " + covidPercent.toFixed(2) + "%<br>Percent probability it is the flu = " + fluPercent.toFixed(2) + "%";
+            resultText.innerHTML = "Percent probability [] = " + covidPercent.toFixed(2) + "%<br>Percent probability [] = " + fluPercent.toFixed(2) + "%";
         }
 
         var docMod = document.lastModified;
