@@ -3,11 +3,12 @@
 <head>
     <title>Newcomer Education Evaluator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
     <style>
         body {
-            margin: 0;
+            margin: 0em;
             font-family: Arial, sans-serif;
         }
         .page {
@@ -18,118 +19,161 @@
             left: -100vw;
             overflow-y: auto;
             z-index: 0;
-            background-color: white;
-            padding: 20px;
-            box-sizing: border-box;
+            background-color: hsl(0, 0%, 100%);
+            padding-bottom: 60px; /* Space for footer */
         }
         .page:target {
-            left: 0;
+            left: 0vw;
             z-index: 1;
         }
-        .question-container {
-            margin-top: 20px;
+        img, object {
+            max-height: 90%;
+            max-width: 90%;
+            display: block;
+            margin: 20px auto;
         }
-        .footer {
+        .w3-btn {
+            margin: 10px 5px;
+        }
+        footer {
             position: fixed;
             bottom: 0;
             width: 100%;
-            left: 0;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 20px auto;
         }
     </style>
 </head>
 <body>
-    <!-- Home Page -->
+    <!-- Front Page -->
     <div id="home" class="page">
         <div class="w3-container w3-flat-silver">
             <h1>Newcomer Education Evaluator</h1>
         </div>
         <div class="w3-container">
-            <p>Assess how well your district serves newly arrived students.</p>
+            <p>Assess how well your district serves newly arrived students with this quick evaluation tool.</p>
             <a href="#q1" class="w3-btn w3-grey w3-round">Get Started</a>
-            <p>Reference: <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls" target="_blank">RIDE MLL Resources</a></p>
-            <img src="https://via.placeholder.com/400x200" alt="Education illustration">
+            <p>This tool was developed with reference to <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls" target="_blank">RIDE's MLL resources</a>.</p>
+            <p><strong>Note:</strong> This is a prototype tool for demonstration purposes only.</p>
+            <img src="https://ride.ri.gov/sites/g/files/xkgbur806/files/styles/large/public/2021-03/DiversityEquityInclusion.jpg" alt="Diverse students learning">
         </div>
-        <div class="w3-container w3-flat-silver footer">
-            <p>Prototype Tool</p>
-        </div>
+        <footer class="w3-container w3-flat-silver">
+            <p>Prototype Tool | Based on RIDE MLL Resources</p>
+        </footer>
     </div>
 
-    <!-- Question 1 -->
-    <div id="q1" class="page">
+    <!-- Question Pages -->
+    <div class="page" id="q1">
         <div class="w3-container w3-flat-silver">
-            <h1>Question 1</h1>
+            <h1>Question 1 of 7</h1>
         </div>
-        <div class="w3-container question-container">
+        <div class="w3-container">
             <p>Are you familiar with Rhode Island's updated MLL Regulations?</p>
-            <a href="#q2" class="w3-btn w3-black">Yes</a>
-            <a href="#q2" class="w3-btn w3-black">No</a>
+            <a href="#q2" onclick="addScore('aware')" class="w3-btn w3-black">Yes</a>
+            <a href="#q2" onclick="addScore('unaware')" class="w3-btn w3-black">No</a>
+            <p class="w3-small">Learn more: <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/mll-regulations" target="_blank">MLL Regulations</a></p>
         </div>
-        <div class="w3-container w3-flat-silver footer">
-            <p>Question 1 of 7</p>
-        </div>
+        <footer class="w3-container w3-flat-silver">
+            <p>Multilingual Learner Evaluation</p>
+        </footer>
     </div>
 
-    <!-- Question 2 -->
-    <div id="q2" class="page">
+    <div class="page" id="q2">
         <div class="w3-container w3-flat-silver">
-            <h1>Question 2</h1>
+            <h1>Question 2 of 7</h1>
         </div>
-        <div class="w3-container question-container">
-            <p>Does your district provide translation services?</p>
-            <a href="#q3" class="w3-btn w3-black">Yes</a>
-            <a href="#q3" class="w3-btn w3-black">No</a>
+        <div class="w3-container">
+            <p>Does your district provide translation services for families?</p>
+            <a href="#q3" onclick="addScore('hasTranslation')" class="w3-btn w3-black">Yes</a>
+            <a href="#q3" onclick="addScore('noTranslation')" class="w3-btn w3-black">No</a>
+            <p class="w3-small">Learn more: <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/translation-and-interpretation-services" target="_blank">Translation Services</a></p>
         </div>
-        <div class="w3-container w3-flat-silver footer">
-            <p>Question 2 of 7</p>
-        </div>
+        <footer class="w3-container w3-flat-silver">
+            <p>Multilingual Learner Evaluation</p>
+        </footer>
     </div>
 
-    <!-- Continue with more questions as needed -->
+    <div class="page" id="q3">
+        <div class="w3-container w3-flat-silver">
+            <h1>Question 3 of 7</h1>
+        </div>
+        <div class="w3-container">
+            <p>Does your district provide transportation services for MLL students?</p>
+            <a href="#q4" onclick="addScore('hasTransportation')" class="w3-btn w3-black">Yes</a>
+            <a href="#q4" onclick="addScore('noTransportation')" class="w3-btn w3-black">No</a>
+        </div>
+        <footer class="w3-container w3-flat-silver">
+            <p>Multilingual Learner Evaluation</p>
+        </footer>
+    </div>
+
+    <!-- Continue with additional questions as needed -->
 
     <!-- Results Page -->
-    <div id="results" class="page">
+    <div class="page" id="results">
         <div class="w3-container w3-flat-silver">
-            <h1>Results</h1>
+            <h1>Evaluation Results</h1>
         </div>
-        <div class="w3-container question-container">
-            <div id="results-content">
-                <p>Your evaluation results will appear here.</p>
+        <div class="w3-container">
+            <div id="resultsContent">
+                <p>Based on your answers, here's how your district might improve services for MLL students:</p>
+                <div id="recommendations"></div>
+                <a href="#home" class="w3-btn w3-black">Start Over</a>
+                <p>For official resources, visit: <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls" target="_blank">RIDE MLL Page</a></p>
             </div>
-            <a href="#home" class="w3-btn w3-black">Start Over</a>
         </div>
-        <div class="w3-container w3-flat-silver footer">
-            <p>Evaluation Complete</p>
-        </div>
+        <footer class="w3-container w3-flat-silver">
+            <p>Prototype Tool | Based on RIDE MLL Resources</p>
+        </footer>
     </div>
 
     <script>
-        // Simple scoring system
-        let score = 0;
-        
-        // You would add functions here to track answers
-        function answerQuestion(value) {
-            score += value;
+        // Track responses
+        const responses = {
+            aware: 0,
+            unaware: 0,
+            hasTranslation: 0,
+            noTranslation: 0,
+            hasTransportation: 0,
+            noTransportation: 0
+            // Add more as needed
+        };
+
+        function addScore(responseType) {
+            responses[responseType]++;
         }
-        
-        // Display results when reaching results page
+
+        function showResults() {
+            const recDiv = document.getElementById('recommendations');
+            let recommendations = '';
+            
+            // Generate recommendations based on responses
+            if (responses.unaware > 0) {
+                recommendations += `<p><strong>Recommendation:</strong> Review the <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/mll-regulations" target="_blank">MLL Regulations</a> to better understand requirements.</p>`;
+            }
+            
+            if (responses.noTranslation > 0) {
+                recommendations += `<p><strong>Recommendation:</strong> Explore <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/translation-and-interpretation-services" target="_blank">translation services</a> to improve family engagement.</p>`;
+            }
+            
+            if (responses.noTransportation > 0) {
+                recommendations += `<p><strong>Recommendation:</strong> Consider transportation options to improve MLL student access.</p>`;
+            }
+            
+            if (recommendations === '') {
+                recommendations = '<p>Your district appears to have strong support systems for MLL students!</p>';
+            } else {
+                recommendations = '<p>Here are some areas for improvement based on your responses:</p>' + recommendations;
+            }
+            
+            recDiv.innerHTML = recommendations;
+            
+            // Add link to RIDE resources
+            recommendations += `<p>For more information, visit <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls" target="_blank">RIDE's MLL resources</a>.</p>`;
+        }
+
+        // Automatically show results when reaching the results page
         window.addEventListener('hashchange', function() {
             if (window.location.hash === '#results') {
-                document.getElementById('results-content').innerHTML = `
-                    <h3>Your Score: ${score}/7</h3>
-                    <p>Based on your answers, here are some recommendations:</p>
-                    <ul>
-                        <li>Review MLL regulations</li>
-                        <li>Consider translation services</li>
-                        <li>Evaluate transportation options</li>
-                    </ul>
-                    <p>Visit <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls" target="_blank">RIDE's MLL page</a> for more resources.</p>
-                `;
+                showResults();
             }
         });
     </script>
