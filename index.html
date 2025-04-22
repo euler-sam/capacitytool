@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
     <style>
         body {
-            margin: 0em;
+            margin: 0;
             font-family: Arial, sans-serif;
         }
         .page {
@@ -19,16 +19,16 @@
             left: -100vw;
             overflow-y: auto;
             z-index: 0;
-            background-color: hsl(0, 0%, 100%);
-            padding-bottom: 60px; /* Space for footer */
+            background-color: white;
+            padding-bottom: 60px;
         }
         .page:target {
-            left: 0vw;
+            left: 0;
             z-index: 1;
         }
-        img, object {
-            max-height: 90%;
+        img {
             max-width: 90%;
+            height: auto;
             display: block;
             margin: 20px auto;
         }
@@ -43,8 +43,8 @@
     </style>
 </head>
 <body>
-    <!-- Front Page -->
-    <div id="home" class="page">
+    <!-- Front Page (now visible by default) -->
+    <div id="home" class="page" style="left:0;z-index:1">
         <div class="w3-container w3-flat-silver">
             <h1>Newcomer Education Evaluator</h1>
         </div>
@@ -76,37 +76,6 @@
         </footer>
     </div>
 
-    <div class="page" id="q2">
-        <div class="w3-container w3-flat-silver">
-            <h1>Question 2 of 7</h1>
-        </div>
-        <div class="w3-container">
-            <p>Does your district provide translation services for families?</p>
-            <a href="#q3" onclick="addScore('hasTranslation')" class="w3-btn w3-black">Yes</a>
-            <a href="#q3" onclick="addScore('noTranslation')" class="w3-btn w3-black">No</a>
-            <p class="w3-small">Learn more: <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/translation-and-interpretation-services" target="_blank">Translation Services</a></p>
-        </div>
-        <footer class="w3-container w3-flat-silver">
-            <p>Multilingual Learner Evaluation</p>
-        </footer>
-    </div>
-
-    <div class="page" id="q3">
-        <div class="w3-container w3-flat-silver">
-            <h1>Question 3 of 7</h1>
-        </div>
-        <div class="w3-container">
-            <p>Does your district provide transportation services for MLL students?</p>
-            <a href="#q4" onclick="addScore('hasTransportation')" class="w3-btn w3-black">Yes</a>
-            <a href="#q4" onclick="addScore('noTransportation')" class="w3-btn w3-black">No</a>
-        </div>
-        <footer class="w3-container w3-flat-silver">
-            <p>Multilingual Learner Evaluation</p>
-        </footer>
-    </div>
-
-    <!-- Continue with additional questions as needed -->
-
     <!-- Results Page -->
     <div class="page" id="results">
         <div class="w3-container w3-flat-silver">
@@ -134,48 +103,42 @@
             noTranslation: 0,
             hasTransportation: 0,
             noTransportation: 0
-            // Add more as needed
         };
 
         function addScore(responseType) {
             responses[responseType]++;
+            return true; // Continue with navigation
         }
 
         function showResults() {
             const recDiv = document.getElementById('recommendations');
             let recommendations = '';
             
-            // Generate recommendations based on responses
             if (responses.unaware > 0) {
-                recommendations += `<p><strong>Recommendation:</strong> Review the <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/mll-regulations" target="_blank">MLL Regulations</a> to better understand requirements.</p>`;
+                recommendations += `<p><strong>Recommendation:</strong> Review the <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/mll-regulations" target="_blank">MLL Regulations</a>.</p>`;
             }
             
             if (responses.noTranslation > 0) {
-                recommendations += `<p><strong>Recommendation:</strong> Explore <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/translation-and-interpretation-services" target="_blank">translation services</a> to improve family engagement.</p>`;
+                recommendations += `<p><strong>Recommendation:</strong> Explore <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/translation-and-interpretation-services" target="_blank">translation services</a>.</p>`;
             }
             
             if (responses.noTransportation > 0) {
-                recommendations += `<p><strong>Recommendation:</strong> Consider transportation options to improve MLL student access.</p>`;
+                recommendations += `<p><strong>Recommendation:</strong> Consider transportation options.</p>`;
             }
             
             if (recommendations === '') {
                 recommendations = '<p>Your district appears to have strong support systems for MLL students!</p>';
-            } else {
-                recommendations = '<p>Here are some areas for improvement based on your responses:</p>' + recommendations;
             }
             
             recDiv.innerHTML = recommendations;
-            
-            // Add link to RIDE resources
-            recommendations += `<p>For more information, visit <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls" target="_blank">RIDE's MLL resources</a>.</p>`;
         }
 
-        // Automatically show results when reaching the results page
+        // Show results when page loads if we're on results page
+        if (window.location.hash === '#results') {
+            showResults();
+        }
+
+        // Also show results if hash changes to results
         window.addEventListener('hashchange', function() {
             if (window.location.hash === '#results') {
-                showResults();
-            }
-        });
-    </script>
-</body>
-</html>
+                showResults
