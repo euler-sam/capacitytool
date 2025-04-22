@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello World</title>
+    <title>Newcomer Education Evaluator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="w3.css">
-    <link rel="stylesheet" href="w3-colors-flat.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
     <style>
         body {
             margin: 0em;
+            font-family: Arial, sans-serif;
         }
         .page {
             width: 100vw;
@@ -19,6 +20,7 @@
             overflow-y: auto;
             z-index: 0;
             background-color: hsl(0, 0%, 100%);
+            padding-bottom: 60px; /* Space for footer */
         }
         .page:target {
             left: 0vw;
@@ -27,263 +29,153 @@
         img, object {
             max-height: 90%;
             max-width: 90%;
+            display: block;
+            margin: 20px auto;
+        }
+        .w3-btn {
+            margin: 10px 5px;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <!-- Front Page -->
-    <div id="header" class="w3-container w3-flat-silver">
-        <h1>Newcomer Education Evaluator</h1>
-    </div>
-    <div id="content" class="w3-container">
-        <p>Feel as if your district is underserving the students who have just arrived, but aren't sure? Answer a few short questions to find out!</p>
-        <a href="#one" class="w3-btn w3-grey w3-round">Get Started</a>
-        <p>The following code has been developed by students at Brown University. This code is shared for demonstration purposes and should not be considered a product. Any user of this code does so at their own risk. Euler De Leon, Emily Lopez Touchy, Estela Westphalen, Jiacheng He, and Brown University are not liable for anything related to this code.</p>
-        <p>THIS CODE SHOULD NOT BE USED FOR ECONOMIC CONSULTATION.</p>
-        <img src="watson.jpg" alt="Refugee, Immigrant, and Undocumented">
-        <footer class="w3-bottom w3-container w3-flat-silver">
-            <p>beta prototype</p>
+    <div id="home" class="page">
+        <div class="w3-container w3-flat-silver">
+            <h1>Newcomer Education Evaluator</h1>
+        </div>
+        <div class="w3-container">
+            <p>Assess how well your district serves newly arrived students with this quick evaluation tool.</p>
+            <a href="#q1" class="w3-btn w3-grey w3-round">Get Started</a>
+            <p>This tool was developed with reference to <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls" target="_blank">RIDE's MLL resources</a>.</p>
+            <p><strong>Note:</strong> This is a prototype tool for demonstration purposes only.</p>
+            <img src="https://ride.ri.gov/sites/g/files/xkgbur806/files/styles/large/public/2021-03/DiversityEquityInclusion.jpg" alt="Diverse students learning">
+        </div>
+        <footer class="w3-container w3-flat-silver">
+            <p>Prototype Tool | Based on RIDE MLL Resources</p>
         </footer>
     </div>
 
-    <!-- Questions and Results -->
-    <div class="page" id="one">
-        <div id="header" class="w3-container w3-flat-silver">
-            <h1>Question 1</h1>
+    <!-- Question Pages -->
+    <div class="page" id="q1">
+        <div class="w3-container w3-flat-silver">
+            <h1>Question 1 of 7</h1>
         </div>
-        <div id="content" class="w3-container">
-            <p>Do you know what a newcomer student is?</p>
-            <a href="#two" onclick="covidAdd();" class="w3-btn w3-black">Yes</a>
-            <a href="#two" onclick="fluAdd();" class="w3-btn w3-black">No</a>
-            <footer class="w3-bottom w3-container w3-flat-silver">
-                <p>RI DHS</p>
-            </footer>
+        <div class="w3-container">
+            <p>Are you familiar with Rhode Island's updated MLL Regulations?</p>
+            <a href="#q2" onclick="addScore('aware')" class="w3-btn w3-black">Yes</a>
+            <a href="#q2" onclick="addScore('unaware')" class="w3-btn w3-black">No</a>
+            <p class="w3-small">Learn more: <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/mll-regulations" target="_blank">MLL Regulations</a></p>
         </div>
+        <footer class="w3-container w3-flat-silver">
+            <p>Multilingual Learner Evaluation</p>
+        </footer>
     </div>
 
-    <!-- Repeat for other questions -->
+    <div class="page" id="q2">
+        <div class="w3-container w3-flat-silver">
+            <h1>Question 2 of 7</h1>
+        </div>
+        <div class="w3-container">
+            <p>Does your district provide translation services for families?</p>
+            <a href="#q3" onclick="addScore('hasTranslation')" class="w3-btn w3-black">Yes</a>
+            <a href="#q3" onclick="addScore('noTranslation')" class="w3-btn w3-black">No</a>
+            <p class="w3-small">Learn more: <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/translation-and-interpretation-services" target="_blank">Translation Services</a></p>
+        </div>
+        <footer class="w3-container w3-flat-silver">
+            <p>Multilingual Learner Evaluation</p>
+        </footer>
+    </div>
+
+    <div class="page" id="q3">
+        <div class="w3-container w3-flat-silver">
+            <h1>Question 3 of 7</h1>
+        </div>
+        <div class="w3-container">
+            <p>Does your district provide transportation services for MLL students?</p>
+            <a href="#q4" onclick="addScore('hasTransportation')" class="w3-btn w3-black">Yes</a>
+            <a href="#q4" onclick="addScore('noTransportation')" class="w3-btn w3-black">No</a>
+        </div>
+        <footer class="w3-container w3-flat-silver">
+            <p>Multilingual Learner Evaluation</p>
+        </footer>
+    </div>
+
+    <!-- Continue with additional questions as needed -->
 
     <!-- Results Page -->
     <div class="page" id="results">
-        <div id="header" class="w3-container w3-flat-silver">
-            <h1>Results</h1>
+        <div class="w3-container w3-flat-silver">
+            <h1>Evaluation Results</h1>
         </div>
-        <div id="content" class="w3-container">
-            <p id="resultsFunction"></p>
-            <a onclick="resultsFunction();" class="w3-btn w3-black">Click Here For Results!</a>
-            <footer class="w3-bottom w3-container w3-flat-silver">
-                <p>RI DHS</p>
-            </footer>
+        <div class="w3-container">
+            <div id="resultsContent">
+                <p>Based on your answers, here's how your district might improve services for MLL students:</p>
+                <div id="recommendations"></div>
+                <a href="#home" class="w3-btn w3-black">Start Over</a>
+                <p>For official resources, visit: <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls" target="_blank">RIDE MLL Page</a></p>
+            </div>
         </div>
+        <footer class="w3-container w3-flat-silver">
+            <p>Prototype Tool | Based on RIDE MLL Resources</p>
+        </footer>
     </div>
 
     <script>
-        var covid_count = 0;
-        var flu_count = 0;
+        // Track responses
+        const responses = {
+            aware: 0,
+            unaware: 0,
+            hasTranslation: 0,
+            noTranslation: 0,
+            hasTransportation: 0,
+            noTransportation: 0
+            // Add more as needed
+        };
 
-        function covidAdd() {
-            covid_count++;
+        function addScore(responseType) {
+            responses[responseType]++;
         }
 
-        function fluAdd() {
-            flu_count++;
+        function showResults() {
+            const recDiv = document.getElementById('recommendations');
+            let recommendations = '';
+            
+            // Generate recommendations based on responses
+            if (responses.unaware > 0) {
+                recommendations += `<p><strong>Recommendation:</strong> Review the <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/mll-regulations" target="_blank">MLL Regulations</a> to better understand requirements.</p>`;
+            }
+            
+            if (responses.noTranslation > 0) {
+                recommendations += `<p><strong>Recommendation:</strong> Explore <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/translation-and-interpretation-services" target="_blank">translation services</a> to improve family engagement.</p>`;
+            }
+            
+            if (responses.noTransportation > 0) {
+                recommendations += `<p><strong>Recommendation:</strong> Consider transportation options to improve MLL student access.</p>`;
+            }
+            
+            if (recommendations === '') {
+                recommendations = '<p>Your district appears to have strong support systems for MLL students!</p>';
+            } else {
+                recommendations = '<p>Here are some areas for improvement based on your responses:</p>' + recommendations;
+            }
+            
+            recDiv.innerHTML = recommendations;
+            
+            // Add link to RIDE resources
+            recommendations += `<p>For more information, visit <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls" target="_blank">RIDE's MLL resources</a>.</p>`;
         }
 
-        function resultsFunction() {
-            var resultText = document.getElementById("resultsFunction");
-            var total = covid_count + flu_count;
-            var covidPercent = (covid_count / total) * 100;
-            var fluPercent = (flu_count / total) * 100;
-            resultText.innerHTML = "Percent probability [] = " + covidPercent.toFixed(2) + "%<br>Percent probability [] = " + fluPercent.toFixed(2) + "%";
-        }
-
-        var docMod = document.lastModified;
-        alert("This file last modified " + docMod);
-        console.log("This file last modified " + docMod);
+        // Automatically show results when reaching the results page
+        window.addEventListener('hashchange', function() {
+            if (window.location.hash === '#results') {
+                showResults();
+            }
+        });
     </script>
 </body>
-</html>
- </script>
-
-
-
-<style>	
-.body {
-     margin: 0em;
-}
-
-  .page {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: -100vw;
-    overflow-y: auto;
-    z-index: 0;
-    background-color: hsl(0,0%,100%);
-}
-
-  .page:target {
-    left: 0vw;
-    z-index: 1;
-}
-  img, object{
-    max-height:90%;
-            max-width:90%;
-}
-
-</style>
-
-<body>
-<div id="header" class="w3-container w3-flat-silver"> <!--start of front page-->
-	<h1>COVID-19 or the flu?</h1> <!--header for front page-->
-</div> <!--start of content for front page-->
-	
-<div id="content" class="w3-container"> <!--below is content of front page-->
-	<p>Feel as if you have COVID-19, but aren't sure? Answer a few short questions to find out!</p> <!--paragraph for front page-->
-	
-	<a href="#one" class="w3-btn w3-grey w3-round"> Get Started </a> <!--button to get started-->
-	
-	<p>The following code has been developed by students at Brown University. This code is shared for demonstration purposes and should not be considered a product. Any user of this code does so at their own risk. Euler De Leon, Emily Lopez Touchy, Estela Westphalen, Jiacheng He, and Brown University are not liable for anything related to this code.</p>
-        <p>THIS CODE SHOULD NOT BE USED FOR ECONOMIC CONSULTATION.</p>
-	
-	<img src="https://hbr.org/resources/images/article_assets/2020/03/Mar20_01_Wikimedia3.jpg" alt="COVID-19 virus">
-	
-	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
-	        <p>RI DHS</p> <!--paragraph for footer-->
-	</footer>
-	</div> <!--end of front page-->
-</div> <!--start of page one-->
-	
-<div class="page" id="one"> <!--start of page one-->
-	<div id="header" class="w3-container w3-flat-silver"> <!-- page one-->
-		<h1>Question 1</h1> <!--header for page one-->
-</div> <!--start of content for page one-->
-	
-<div id="content" class="w3-container"> <!--below is content for page one-->
-        <p>Are you aware of the updated MLL Regulations?</p> <!--paragraph for page one-->   
-	<a href="#two"  onclick="covidAdd();" class="w3-btn w3-black"> Yes</a> <!--button for yes-->
-        <a href="#two"  onclick="fluAdd();" class="w3-btn w3-black"> No</a> <!--button for no-->
-		
-	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
-	        <p>RI DHS</p> <!--paragraph for footer-->
-	</footer>
-        </div> <!--end of page one-->
-</div> <!--start of page two=-->
-
-<div class="page" id="two"> <!--start of page two-->
-	<div id="header" class="w3-container w3-flat-silver"> <!--page two-->
-		<h1>Question 2</h1> <!--header for page two-->
-	</div> <!--start of content for page two-->
-	
-<div id="content" class="w3-container"> <!--below is content for page two-->
-	<p>Do you have translation services, have employed them before?</p> <!--paragraph for page two-->
-        <a href="#three"  onclick="covidAdd();" class="w3-btn w3-black"> Yes</a> <!--button for yes-->
-        <a href="#three"  onclick="fluAdd();" class="w3-btn w3-black"> No</a> <!--button for no-->
-		
-	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
-	        <p>RI DHS</p> <!--paragraph for footer-->
-	</footer>
-	</div> <!--end of page two-->
-</div>	<!--start of page three-->
-	
-<div class="page" id="three"> <!--start of page three-->
-	<div id="header" class="w3-container w3-flat-silver"> <!--page three-->
-		<h1>Question 3</h1> <!--header for page three-->
-	</div> <!--start of content for page three-->
-	
-<div id="content" class="w3-container"> <!---below is content for page three-->
-        <p>Do you have Transportation services available?</p> <!--paragraph for page three-->
-	<a href="#four"  onclick="fluAdd();" class="w3-btn w3-black"> Yes</a> <!--button for yes-->
-	<a href="#four"  onclick="covidAdd();" class="w3-btn w3-black"> No</a> <!--button for no-->
-		
-	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
-	        <p>RI DHS</p> <!--paragraph for footer-->
-	</footer>
-        </div> <!--end of page three-->
-</div> <!--start of page four-->
-		
-<div class="page" id="four"> <!--start of page four-->
-	<div id="header" class="w3-container w3-flat-silver"> <!--page four-->
-		<h1>Question 4</h1> <!--header for page four-->
-	</div> <!--start of content for page four-->
-	
-<div id="content" class="w3-container"> <!--below is content for page four-->
-        <p>Do you have a liason for Newcomer youth?</p> <!--paragraph for page four-->
-        <a href="#five"  onclick="covidAdd();" class="w3-btn w3-black"> Yes</a> <!--button for yes-->
-        <a href="#five"  onclick="fluAdd();" class="w3-btn w3-black" > No</a> <!--button for no-->
-	
-	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
-	        <p>RI DHS</p> <!--paragraph for footer-->
-	</footer>
-	</div> <!--end of page four-->
-</div> <!--start of page five-->
-		
-<div class="page" id="five"> <!--start of page five-->
-	<div id="header" class="w3-container w3-flat-silver"> <!--page five-->
-		<h1>Question 5</h1> <!--header for page five-->
-	</div> <!--starts the content for page five-->
-	
-<div id="content" class="w3-container"> <!--below is content for page five-->
-	<p>Are your MLL students aware of the resources to learn english in RI?</p> <!--page five--->
-	<a href="#six"  onclick="fluAdd();" class="w3-btn w3-black"> Yes</a> <!--yes button-->
-	<a href="#six"  onclick="covidAdd();" class="w3-btn w3-black"> No</a> <!--no button-->
-		
-	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
-	        <p>RI DHS</p> <!--paragraph for footer-->
-	</footer>
-	</div> <!--end of page five-->
-</div> <!--start of page six-->
-
-<div class="page" id="six"> <!--start of page six-->
-	<div id="header" class="w3-container w3-flat-silver"> <!--page six-->
-		<h1>Question 6</h1> <!--header for page six-->
-	</div> <!--start the content for page six-->
-	
-<div id="content" class"w3-container"> <!--below is content for page six-->
-	<p>Does the district have newcomer faculty?</p> <!--paragraph for page six-->
-	<a href="#results"  onclick="covidAdd();" class="w3-btn w3-black"> Yes</a> <!--yes button-->
-	<a href="#results"  onclick="fluAdd();" class="w3-btn w3-black"> No</a> <!--no button-->
-		
-	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
-	        <p>RI DHS</p> <!--paragraph for footer-->
-	</footer>
-	</div> <!--end of page six-->
-
-</div> <!--start of page seven-->
-
-<div class="page" id="seven"> <!--start of page seven-->
-	<div id="header" class="w3-container w3-flat-silver"> <!--page seven-->
-		<h1>Question 7</h1> <!--header for page seven-->
-	</div> <!--start the content for page seven-->
-	
-<div id="content" class"w3-container"> <!--below is content for page seven-->
-	<p>Do you know what a newcomer is?</p> <!--paragraph for page seven-->
-	<a href="#results"  onclick="covidAdd();" class="w3-btn w3-black"> Yes</a> <!--yes button-->
-	<a href="#results"  onclick="fluAdd();" class="w3-btn w3-black"> No</a> <!--no button-->
-		
-	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
-	        <p>RI DHS</p> <!--paragraph for footer-->
-	</footer>
-	</div> <!--end of page seven-->
-</div> <!--start of results page-->
-	
-<div class="page" id="results"> <!--start of results page-->
-	<div id="header" class="w3-container w-3 flat-silver"> <!--results page-->
-		<h1>Results</h1> <!--header for results page-->
-	</div> <!--starts content for results page-->
-	
-<div id="content" class="w3-container"> <!--below is content for results page-->
-	<p id="resultsFunction"></p> <!--results paragraph-->
-	<a onclick="resultsFunction();"  class="w3-btn w3-black"> Click Here For Results!</a> <!--results button-->
-		
-	<footer class="w3-bottom w3-container w3-flat-silver"> <!--footer-->
-	        <p>RI DHS</p> <!--paragraph for footer-->
-	</footer>
-	<div> <!--end of results page-->
-</div> <!--end of page-->
-      
-	  
-	   
-   </body>
 </html>
