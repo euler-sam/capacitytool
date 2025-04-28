@@ -38,5 +38,7 @@
 {color:#000;background-color:#bdc3c7}
 .w3-flat-asbestos
 {color:#fff;background-color:#7f8c8d}
-.w3-flat-navy 
-{color: #fff;background-color:#001f3f}
+.w3-flat-navy {
+    color: #fff !important;
+    background-color: #001f3f !important;
+}
