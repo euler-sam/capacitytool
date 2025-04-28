@@ -436,18 +436,21 @@
             let lowScoresCount = 0;
             
             // Generate question-specific recommendations for scores 1-3
-            for (const [question, data] of Object.entries(responses)) {
-                if (data.score <= 3) {
-                    questionRecommendations += `
-                        <div class="w3-panel w3-leftbar w3-light-grey">
-                            <p><strong>For question ${question.substring(1)}:</strong> 
-                            Your response indicates room for improvement. Learn more: 
-                            <a href="${data.link}" target="_blank">${data.link}</a></p>
-                        </div>
-                    `;
-                    lowScoresCount++;
-                }
-            }
+        for (const [question, data] of Object.entries(responses)) {
+            if (data.score <= 3) {
+                questionRecommendations += `
+                    <div class="w3-panel w3-leftbar w3-light-grey">
+                        <p><strong>Question ${question.substring(1)}:</strong> 
+                        <p>Your response indicates room for improvement. But no worries! Here are some recommendations:</p>
+                <div class="w3-panel w3-white w3-border">
+                    ${data.link}
+                </div>
+            </div>
+        `;
+        lowScoresCount++;
+    }
+}
+
             
             // Generate cumulative recommendations if 4+ questions scored 4-5
             let cumulativeRecommendations = '';
