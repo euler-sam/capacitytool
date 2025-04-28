@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f8f8f8; /* Light background for contrast */
         }
         .page {
             width: 100vw;
@@ -22,49 +22,33 @@
             background-color: white;
             padding-bottom: 60px;
         }
-        
-        /* Custom color classes */
-        .w3-navy {
-            background-color: #001f3f !important;
-            color: white !important;
+        .page:target {
+            left: 0;
+            z-index: 1;
         }
-        
-        .w3-dark-yellow {
-            background-color: #FFD700 !important; /* Gold/yellow */
-            color: #333 !important;
+        img {
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
         }
-        
-        .w3-border-navy {
-            border-color: #001f3f !important;
+        .w3-btn {
+            margin: 10px 5px;
         }
-        
-        /* Header styling */
-        .w3-container.w3-navy {
-            padding: 16px 0;
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
-        
-        /* Button styling */
-        .w3-btn.w3-dark-yellow {
-            background-color: #FFD700;
-            color: #001f3f;
-        }
-        
-        .w3-btn.w3-dark-yellow:hover {
-            background-color: #FFC000; /* Slightly darker yellow on hover */
-        }
-        
-        /* Footer styling */
-        footer.w3-navy {
-            padding: 12px 0;
-        }
-        
-        /* Panel styling for questions */
-        .w3-panel.w3-leftbar {
-            border-left: 4px solid #FFD700;
+        .option-btn {
+            width: 100%;
+            margin: 5px 0;
+            text-align: left;
         }
     </style>
 </head>
 <body>
+
 
     <!-- Front Page (now visible by default) -->
     <div id="home" class="page" style="left:0;z-index:1">
@@ -72,7 +56,7 @@
             <h1>Newcomer Education Evaluator</h1>
         </div>
         <div class="w3-container">
-            <p>Feel as if your district is underserving the students who have just arrived, but aren't sure? Find out in less than 10 minutes! </</p>
+            <p>Feel as if your district is underserving the students who have just arrived, but aren't sure? Find out in less than 10 minutes! </p>
             <a href="#q1" class="w3-btn w3-grey w3-round">Get Started</a>
             <p>The following code has been developed by students at Brown University. This code is shared for demonstration purposes and should not be considered a product. Any user of this code does so at their own risk. Euler De Leon, Emily Lopez Touchy, Estela Westphalen, Jiacheng He, and Brown University are not liable for anything related to this code. The website is submitted in partial fulfillment of the requirements for the degree of Master of Public Affaris in the Watson Institute for International and Public Affairs at Brown University. Website made in reference to <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls" target="_blank">RIDE's MLL resources</a>.</p>
             <p><strong>Note:</strong> This is a prototype tool for demonstration purposes only. "We must teach the way students learn, rather than expecting them to learn the way we teach.”— Pedro Noguera</p>
@@ -216,7 +200,7 @@
             <h1>Question 8 of 15</h1>
         </div>
         <div class="w3-container">
-            <p>Are there newcomer teachers currently employed, or adjacent to the school, that interfaces regularly with newcomer students?</p>
+            <p>Are documents sent home, district services such as grade portals, translated to the language of newcomer families?</p>
             <a href="#q9" onclick="addScore('q8', 1)" class="w3-btn option-btn w3-light-grey">1 - Students or parents must translate official school communications by themselves</a>
             <a href="#q9" onclick="addScore('q8', 2)" class="w3-btn option-btn w3-light-grey">2 - Students or parents must translate official school communications by themselves with some documents being translated</a>
             <a href="#q9" onclick="addScore('q8', 3)" class="w3-btn option-btn w3-light-grey">3 - Some key official school communications and meetings are translated into at least 3 languages spoken by students and parents</a>
@@ -438,7 +422,12 @@
         link: "The AMOR Support Line is a 24-hour multilingual (currently English & Spanish) line that connects community members to AMOR's network of services, including comprehensive mental health care, legal support, court accompaniment, community support, transportation, and interpretation.<br><br>Support Line Number: (401) 675-1414<br><br>Clinica Esperanza/Hope Clinic: Clínica Esperanza offers primary medical care to RI residents without health insurance, with an emphasis on Spanish-speaking and culturally accustomed care. In addition, our focus is on prevention and health maintenance, giving our patients the tools they need to improve their quality of life in the long-term. Our clinic is run by paid staff members and is supported by a robust volunteer community.<br><br><a href='https://www.brownhealth.org/centers-services/kids-link-ri' target='_blank'>More Emotional Support for Kids</a>"
     }
 };
-
+        document.querySelector('a[href="#home"]').addEventListener('click', function() {
+        for (const question in responses) {
+            responses[question].score = 0;
+        }
+    });
+        
         // Function to record score
         function addScore(question, score) {
             responses[question].score = score;
