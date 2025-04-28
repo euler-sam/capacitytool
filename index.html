@@ -439,7 +439,6 @@ const responses = {
     }
 };
 
-// Function to record score
 function addScore(question, score) {
     responses[question].score = score;
     return true;
@@ -452,33 +451,29 @@ function showResults() {
     let questionRecommendations = '';
     let lowScoresCount = 0;
     
-    // Generate question-specific recommendations for scores 1-3
+    // Generate question-specific recommendations
     for (const [question, data] of Object.entries(responses)) {
-        if (data.score <= 3) {
+        if (data.score <= 3 && data.score > 0) { // Only show if answered (score > 0)
             questionRecommendations += `
                 <div class="w3-panel w3-leftbar w3-light-grey">
                     <p><strong>For question ${question.substring(1)}:</strong> 
-                    Your response indicates room for improvement. Here are specific resources for this area:
-                    <a href="${data.improvementLink}" target="_blank">Improvement Resources</a> | 
-                    <a href="${data.link}" target="_blank">General MLL Resources</a></p>
+                    ${data.link}</p>
+                    <a href="${data.improvementLink}" target="_blank" class="w3-btn w3-small w3-blue">Improvement Resources</a>
                 </div>
             `;
             lowScoresCount++;
         }
     }
     
-    // Generate cumulative recommendations if 4+ questions scored 3 or below
+    // Generate cumulative recommendations
     let cumulativeRecommendations = '';
     if (lowScoresCount >= 4) {
         cumulativeRecommendations = `
             <div class="w3-panel w3-leftbar w3-pale-red">
                 <h3>Overall Recommendation</h3>
-                <p>Based on your responses, your district may benefit from comprehensive MLL program improvements. Here are some resources:</p>
-                <ul>
-                    <li><a href="https://ride.ri.gov/students-families/multilingual-learners-mlls" target="_blank">RIDE MLL Main Page</a></li>
-                    <li><a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/mll-regulations" target="_blank">MLL Regulations</a></li>
-                    <li><a href="https://ride.ri.gov/students-families/multilingual-learners-mlls/professional-development" target="_blank">Professional Development</a></li>
-                </ul>
+                <p>Based on your responses, your district may benefit from comprehensive improvements:</p>
+                <a href="https://ride.ri.gov/students-families/multilingual-learners-mlls" 
+                   target="_blank" class="w3-btn w3-small w3-blue">RIDE MLL Resources</a>
             </div>
         `;
     } else if (questionRecommendations === '') {
@@ -493,17 +488,16 @@ function showResults() {
     cumulativeRecsDiv.innerHTML = cumulativeRecommendations;
 }
 
-// Show results when page loads if we're on results page
-if (window.location.hash === '#results') {
-    showResults();
-}
-
-// Also show results if hash changes to results
-window.addEventListener('hashchange', function() {
+// Ensure results show in all cases
+document.addEventListener('DOMContentLoaded', function() {
     if (window.location.hash === '#results') {
         showResults();
     }
 });
-    </script>
-</body>
-</html>
+
+window.addEventListener('hashchange', function() {
+    if (window.location.hash === '#results') {
+        // Small delay to ensure page transition completes
+        setTimeout(showResults, 50);
+    }
+});
